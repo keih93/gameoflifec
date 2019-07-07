@@ -134,6 +134,14 @@ void filling_random (char * currentfield, int width, int height) {
   }
 }
 
+void filling_runner2 (char * currentfield, int width, int height) {
+  currentfield[calcIndex(width, width-3, height-2)] = ALIVE;
+  currentfield[calcIndex(width, width-2, height-1)] = ALIVE;
+  currentfield[calcIndex(width, width-1, height-3)] = ALIVE;
+  currentfield[calcIndex(width, width-1, height-2)] = ALIVE;
+  currentfield[calcIndex(width, width-1, height-1)] = ALIVE;
+}
+
 void filling_runner (char * currentfield, int width, int height) {
   int offset_x = width/3;
   int offset_y = height/2;
@@ -172,7 +180,8 @@ void game (int width, int height, int num_timesteps, int widthsize, int heightsi
 
   // TODO 1: use your favorite filling
   //filling_random (currentfield, width, height);
-  filling_runner (currentfield, width, height);
+  //filling_runner (currentfield, width, height);
+  filling_runner2 (currentfield, width, height);
 
   int time = 0;
   write_field (currentfield, width, height, time);
