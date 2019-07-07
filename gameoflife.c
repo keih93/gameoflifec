@@ -135,11 +135,11 @@ void filling_random (char * currentfield, int width, int height) {
 }
 
 void filling_runner2 (char * currentfield, int width, int height) {
+  currentfield[calcIndex(width, width-4, height-3)] = ALIVE;
   currentfield[calcIndex(width, width-3, height-2)] = ALIVE;
-  currentfield[calcIndex(width, width-2, height-1)] = ALIVE;
-  currentfield[calcIndex(width, width-1, height-3)] = ALIVE;
-  currentfield[calcIndex(width, width-1, height-2)] = ALIVE;
-  currentfield[calcIndex(width, width-1, height-1)] = ALIVE;
+  currentfield[calcIndex(width, width-2, height-4)] = ALIVE;
+  currentfield[calcIndex(width, width-2, height-3)] = ALIVE;
+  currentfield[calcIndex(width, width-2, height-2)] = ALIVE;
 }
 
 void filling_runner (char * currentfield, int width, int height) {
