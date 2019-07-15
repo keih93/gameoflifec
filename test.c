@@ -7,9 +7,9 @@ int main(int argc, char *argv[]) {
   int sum;
   #pragma omp parallel private(i) reduction( +:sum)
   {
-    printf("thread %d: i = %d\n", omp_get_thread_num(), i);
     i = 1000 + omp_get_thread_num();
     sum = omp_get_thread_num();
+    printf("thread %d: i = %d\n", omp_get_thread_num(), i);
   }
   printf("i = %d, sum = %d\n", i, sum);
 
