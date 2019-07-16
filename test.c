@@ -1,17 +1,16 @@
 #include <omp.h>
 #include <stdio.h>
 #include <stdlib.h>
-
+#define N 100000
 int main(int argc, char *argv[]) {
-  int i = 10;
-  int sum;
-  #pragma omp parallel private(i) reduction( +:sum)
-  {
-    i = 1000 + omp_get_thread_num();
-    sum = omp_get_thread_num();
-    printf("thread %d: i = %d\n", omp_get_thread_num(), i);
+  int i, a[N];
+  for (i = 0; i < N; i++) a[i] = rand();
+
+  #pragma omp parallel for
+  for (i = 0; i < N; i++) {
+    // calc ( a , i ) ;
+    printf("a[%d]=%d\n", i, a[i]);
   }
-  printf("i = %d, sum = %d\n", i, sum);
 
   return 0;
 }
