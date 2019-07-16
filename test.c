@@ -1,17 +1,14 @@
-#include <omp.h>
 #include <stdio.h>
-#include <stdlib.h>
-#define N 100000
-int main(int argc, char *argv[]) {
-  int i, a[N];
-  #pragma omp parallel for
-  for (i = 0; i < N; i++) a[i] = rand();
+#include <omp.h>
 
-  #pragma omp parallel for
-  for (i = 0; i < N; i++) {
-    // calc ( a , i ) ;
-    printf("a[%d]=%d\n", i, a[i]);
-  }
-
-  return 0;
-}
+ int main() {
+#pragma omp parallel sections num_threads(4)
+ {
+ printf("1 Hello from thread %d\n", omp_get_thread_num());
+ #pragma omp section
+ printf("2 Hello from thread %d\n", omp_get_thread_num());
+ #pragma omp section
+ printf("3 Hello from thread %d\n", omp_get_thread_num());
+ }
+ return 0;
+ }
